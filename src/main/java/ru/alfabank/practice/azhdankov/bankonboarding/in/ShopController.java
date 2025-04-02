@@ -4,11 +4,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.ProductDto;
 import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.CalculatedRespDto;
 import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.WelcomeRespDto;
 import ru.alfabank.practice.azhdankov.bankonboarding.in.mapper.BaseMapper;
+import ru.alfabank.practice.azhdankov.bankonboarding.in.validator.ProductDtoConstraint;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.ProductModel;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.WelcomeModel;
 import ru.alfabank.practice.azhdankov.bankonboarding.service.CalculationService;
@@ -17,6 +19,7 @@ import ru.alfabank.practice.azhdankov.bankonboarding.service.WelcomeService;
 
 @RestController
 @RequestMapping("/shop")
+@Validated
 public class ShopController {
 
     /* Наверное, лучше всё так котроллеры разделить на каждое взаимодействие и в каждом из них инжектить свой сервис
@@ -41,7 +44,8 @@ public class ShopController {
     }
 
     @PostMapping("/calc")
-    public ResponseEntity<CalculatedRespDto> calculateSum(@RequestBody List<ProductDto> products) {
+    public ResponseEntity<CalculatedRespDto> calculateSum(
+            @RequestBody @ProductDtoConstraint List<ProductDto> products) {
         List<ProductModel> productModelList = baseMapper.toListProductModel(products);
         CalculatedRespDto calculatedRespDto =
                 baseMapper.toCalculatedRespDto(calculationService.getProducts(productModelList));

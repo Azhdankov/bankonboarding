@@ -26,7 +26,7 @@ public class BankOnboardingITTest extends BaseContextTest {
         ResponseEntity<WelcomeRespDto> response =
                 restTemplate.getForEntity("/shop/welcome", WelcomeRespDto.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().getMessage())
+        assertThat(Objects.requireNonNull(response.getBody()).getMessage())
                 .isEqualTo("Добро пожаловать в наш чудестный магазин");
     }
 
@@ -52,7 +52,7 @@ public class BankOnboardingITTest extends BaseContextTest {
     @Test
     void whenCalculateSumThenOk() {
 
-        List<ProductModel> existingProducts = dbStub.findAll();
+        List<ProductModel> existingProducts = productRepository.findAll();
         List<ProductDto> requestDtoList = new ArrayList<>();
 
         existingProducts.forEach(
@@ -73,12 +73,13 @@ public class BankOnboardingITTest extends BaseContextTest {
 
         Map<UUID, ProductModel> existingProductsMap =
                 existingProducts.stream()
+                        .filter(ProductModel::isExists)
                         .collect(Collectors.toMap(ProductModel::getId, Function.identity()));
 
         List<ProductDto> responseProducts = responseBody.getProductDtoList();
 
         assertThat(responseProducts)
-                .hasSameSizeAs(requestDtoList)
+                .hasSize(requestDtoList.size() - 1)
                 .allSatisfy(
                         responseProduct -> {
                             ProductModel existingProduct =
@@ -100,28 +101,31 @@ public class BankOnboardingITTest extends BaseContextTest {
                 restTemplate.postForEntity("/shop/calc", requestDtoList, ErrorResponseDto.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        assertThat(response.getBody().getErrorMessage()).startsWith("Product with id");
+        assertThat(Objects.requireNonNull(response.getBody()).getErrorMessage())
+                .startsWith("Product with id");
     }
 
     @Test
     void whenCalculateSumThenCountOfProductIsExceeded() {
 
-        List<ProductModel> existingProducts = dbStub.findAll();
+        List<ProductModel> existingProducts = productRepository.findAll();
         List<ProductDto> requestDtoList = new ArrayList<>();
 
-        existingProducts.forEach(
-                product -> {
-                    ProductDto productDto = new ProductDto();
-                    productDto.setId(product.getId());
-                    productDto.setCount(product.getCount() + 1);
-                    requestDtoList.add(productDto);
-                });
+        existingProducts.stream()
+                .filter(ProductModel::isExists)
+                .forEach(
+                        product -> {
+                            ProductDto productDto = new ProductDto();
+                            productDto.setId(product.getId());
+                            productDto.setCount(product.getCount() + 1);
+                            requestDtoList.add(productDto);
+                        });
 
         ResponseEntity<ErrorResponseDto> response =
                 restTemplate.postForEntity("/shop/calc", requestDtoList, ErrorResponseDto.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-        assertThat(response.getBody().getErrorMessage())
+        assertThat(Objects.requireNonNull(response.getBody()).getErrorMessage())
                 .startsWith("Count of product is exceeded. Available product");
     }
 }

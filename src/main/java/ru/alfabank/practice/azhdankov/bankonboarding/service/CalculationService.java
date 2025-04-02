@@ -10,18 +10,19 @@ import org.springframework.stereotype.Service;
 import ru.alfabank.practice.azhdankov.bankonboarding.exception.CountOfProductIsExceededException;
 import ru.alfabank.practice.azhdankov.bankonboarding.exception.ProductNotFoundException;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.ProductModel;
-import ru.alfabank.practice.azhdankov.bankonboarding.repository.DBStub;
+import ru.alfabank.practice.azhdankov.bankonboarding.out.ProductRepository;
 
 @Service
 public class CalculationService {
 
-    @Autowired private DBStub dbStub;
+    @Autowired private ProductRepository productRepository;
 
     public List<ProductModel> getProducts(List<ProductModel> productModelList) {
 
-        List<UUID> productIds = productModelList.stream().map(ProductModel::getId).toList();
+        List<String> productIds =
+                productModelList.stream().map(product -> String.valueOf(product.getId())).toList();
 
-        List<ProductModel> existingProductModelList = dbStub.findAllByIdIn(productIds);
+        List<ProductModel> existingProductModelList = productRepository.findAllByUuidIn(productIds);
 
         Map<UUID, ProductModel> existingProductsMap =
                 existingProductModelList.stream()
@@ -34,6 +35,8 @@ public class CalculationService {
                                     existingProductsMap.get(requestedProduct.getId());
                             if (existingProduct == null)
                                 throw new ProductNotFoundException(requestedProduct.getId());
+                            if (!existingProduct.isExists())
+                                existingProductModelList.remove(existingProduct);
                             if (requestedProduct.getCount() > existingProduct.getCount())
                                 throw new CountOfProductIsExceededException(
                                         existingProduct.getId().toString(),

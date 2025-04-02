@@ -9,8 +9,9 @@ import lombok.*;
 @Getter
 @Setter
 public class ProductModel {
-    UUID id;
-    String name;
-    double price;
-    int count;
+    private UUID id;
+    private String name;
+    private double price;
+    private int count;
+    private boolean isExists;
 }

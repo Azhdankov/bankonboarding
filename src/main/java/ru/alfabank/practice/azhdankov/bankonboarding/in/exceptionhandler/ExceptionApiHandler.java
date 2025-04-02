@@ -1,5 +1,6 @@
 package ru.alfabank.practice.azhdankov.bankonboarding.in.exceptionhandler;
 
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -28,6 +29,12 @@ public class ExceptionApiHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorResponseDto> badRequest(HttpMessageNotReadableException exception) {
+        return new ResponseEntity<>(
+                new ErrorResponseDto(exception.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorResponseDto> badRequest(ConstraintViolationException exception) {
         return new ResponseEntity<>(
                 new ErrorResponseDto(exception.getMessage()), HttpStatus.BAD_REQUEST);
     }
