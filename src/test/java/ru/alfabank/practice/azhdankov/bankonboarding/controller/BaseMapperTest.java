@@ -6,7 +6,7 @@ import java.util.List;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
 import ru.alfabank.practice.azhdankov.bankonboarding.BaseContextTest;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.CalculatedRespDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.resp.CalculatedRespDto;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.ProductModel;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.WelcomeModel;
 

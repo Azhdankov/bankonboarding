@@ -1,9 +1,9 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.in.validator;
+package ru.alfabank.practice.azhdankov.bankonboarding.validator;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import java.util.List;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.ProductDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.ProductDto;
 
 public class ProductDtoValidator
         implements ConstraintValidator<ProductDtoConstraint, List<ProductDto>> {

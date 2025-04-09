@@ -1,4 +1,4 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp;
+package ru.alfabank.practice.azhdankov.bankonboarding.dto.resp;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

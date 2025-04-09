@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.ProductModel;
-import ru.alfabank.practice.azhdankov.bankonboarding.out.ProductRepository;
+import ru.alfabank.practice.azhdankov.bankonboarding.repository.ProductRepository;
 
 @Service
 public class ProductService {

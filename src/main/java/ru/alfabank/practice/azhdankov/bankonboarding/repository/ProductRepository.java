@@ -1,11 +1,10 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.out;
+package ru.alfabank.practice.azhdankov.bankonboarding.repository;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
+import ru.alfabank.practice.azhdankov.bankonboarding.mapper.PersistenceMapper;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.ProductModel;
-import ru.alfabank.practice.azhdankov.bankonboarding.out.mapper.PersistenceMapper;
-import ru.alfabank.practice.azhdankov.bankonboarding.out.repository.ProductMongoDB;
 
 @Repository
 @AllArgsConstructor

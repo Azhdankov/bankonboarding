@@ -1,4 +1,4 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.in.validator;
+package ru.alfabank.practice.azhdankov.bankonboarding.validator;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

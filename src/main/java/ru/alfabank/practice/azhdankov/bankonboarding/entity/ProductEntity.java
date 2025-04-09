@@ -1,4 +1,4 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.out.entity;
+package ru.alfabank.practice.azhdankov.bankonboarding.entity;
 
 import java.math.BigInteger;
 import lombok.*;

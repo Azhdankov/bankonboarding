@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import ru.alfabank.practice.azhdankov.bankonboarding.exception.CountOfProductIsExceededException;
 import ru.alfabank.practice.azhdankov.bankonboarding.exception.ProductNotFoundException;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.ProductModel;
-import ru.alfabank.practice.azhdankov.bankonboarding.out.ProductRepository;
+import ru.alfabank.practice.azhdankov.bankonboarding.repository.ProductRepository;
 
 @Service
 public class CalculationService {

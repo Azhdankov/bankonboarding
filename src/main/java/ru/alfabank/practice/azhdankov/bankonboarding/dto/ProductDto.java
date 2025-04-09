@@ -1,4 +1,4 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.in.dto;
+package ru.alfabank.practice.azhdankov.bankonboarding.dto;
 
 import java.util.UUID;
 import lombok.Getter;

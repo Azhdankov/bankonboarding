@@ -1,10 +1,10 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp;
+package ru.alfabank.practice.azhdankov.bankonboarding.dto.resp;
 
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.ProductDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.ProductDto;
 
 @NoArgsConstructor
 @Getter

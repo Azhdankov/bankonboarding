@@ -13,10 +13,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import ru.alfabank.practice.azhdankov.bankonboarding.BaseContextTest;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.ProductDto;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.CalculatedRespDto;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.ErrorResponseDto;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.WelcomeRespDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.ProductDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.resp.CalculatedRespDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.resp.ErrorResponseDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.resp.WelcomeRespDto;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.ProductModel;
 
 public class BankOnboardingITTest extends BaseContextTest {

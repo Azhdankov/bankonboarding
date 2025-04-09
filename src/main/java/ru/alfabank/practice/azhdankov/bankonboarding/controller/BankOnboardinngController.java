@@ -1,4 +1,4 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.in;
+package ru.alfabank.practice.azhdankov.bankonboarding.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,21 +6,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.ProductDto;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.CalculatedRespDto;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.WelcomeRespDto;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.mapper.BaseMapper;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.validator.ProductDtoConstraint;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.ProductDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.resp.CalculatedRespDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.resp.WelcomeRespDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.mapper.BaseMapper;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.ProductModel;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.WelcomeModel;
 import ru.alfabank.practice.azhdankov.bankonboarding.service.CalculationService;
 import ru.alfabank.practice.azhdankov.bankonboarding.service.ProductService;
 import ru.alfabank.practice.azhdankov.bankonboarding.service.WelcomeService;
+import ru.alfabank.practice.azhdankov.bankonboarding.validator.ProductDtoConstraint;
 
 @RestController
 @RequestMapping("/shop")
 @Validated
-public class ShopController {
+public class BankOnboardinngController {
 
     /* Наверное, лучше всё так котроллеры разделить на каждое взаимодействие и в каждом из них инжектить свой сервис
      * но в требованиях был один контроллер ShopController */

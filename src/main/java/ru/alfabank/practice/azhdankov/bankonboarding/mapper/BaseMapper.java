@@ -1,13 +1,13 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.in.mapper;
+package ru.alfabank.practice.azhdankov.bankonboarding.mapper;
 
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.stereotype.Component;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.ProductDto;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.CalculatedRespDto;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.WelcomeRespDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.ProductDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.resp.CalculatedRespDto;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.resp.WelcomeRespDto;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.ProductModel;
 import ru.alfabank.practice.azhdankov.bankonboarding.model.WelcomeModel;
 

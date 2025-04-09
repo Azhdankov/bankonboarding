@@ -10,16 +10,16 @@ import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.MountableFile;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.ShopController;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.mapper.BaseMapper;
-import ru.alfabank.practice.azhdankov.bankonboarding.out.ProductRepository;
-import ru.alfabank.practice.azhdankov.bankonboarding.out.repository.ProductMongoDB;
+import ru.alfabank.practice.azhdankov.bankonboarding.controller.BankOnboardinngController;
+import ru.alfabank.practice.azhdankov.bankonboarding.mapper.BaseMapper;
+import ru.alfabank.practice.azhdankov.bankonboarding.repository.ProductMongoDB;
+import ru.alfabank.practice.azhdankov.bankonboarding.repository.ProductRepository;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Testcontainers
 public abstract class BaseContextTest {
 
-    @Autowired protected ShopController controller;
+    @Autowired protected BankOnboardinngController controller;
     @Autowired protected TestRestTemplate restTemplate;
     @Autowired protected ProductRepository productRepository;
     @Autowired protected ProductMongoDB productMongoDB;

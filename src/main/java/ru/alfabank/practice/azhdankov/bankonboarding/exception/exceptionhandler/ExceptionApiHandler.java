@@ -1,4 +1,4 @@
-package ru.alfabank.practice.azhdankov.bankonboarding.in.exceptionhandler;
+package ru.alfabank.practice.azhdankov.bankonboarding.exception.exceptionhandler;
 
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import ru.alfabank.practice.azhdankov.bankonboarding.dto.resp.ErrorResponseDto;
 import ru.alfabank.practice.azhdankov.bankonboarding.exception.CountOfProductIsExceededException;
 import ru.alfabank.practice.azhdankov.bankonboarding.exception.ProductNotFoundException;
-import ru.alfabank.practice.azhdankov.bankonboarding.in.dto.resp.ErrorResponseDto;
 
 @RestControllerAdvice
 public class ExceptionApiHandler {
